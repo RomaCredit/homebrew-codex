@@ -26,9 +26,12 @@ jobs:
           HOMEBREW_NO_ANALYTICS: "1"
           HOMEBREW_NO_AUTO_UPDATE: "1"
         run: |
-          brew tap-new RomaCredit/codex
-          cp Formula/*.rb "$(brew --repository RomaCredit/codex)/Formula/"
-          brew style RomaCredit/codex
+          brew tap RomaCredit/codex "$GITHUB_WORKSPACE"
+          if brew command trust >/dev/null 2>&1; then
+            brew trust --formula RomaCredit/codex/codex-provider-switcher
+            brew trust --formula RomaCredit/codex/claude-provider-switcher
+          fi
+          brew style Formula/*.rb
           brew install RomaCredit/codex/codex-provider-switcher RomaCredit/codex/claude-provider-switcher
           brew test RomaCredit/codex/codex-provider-switcher
           brew test RomaCredit/codex/claude-provider-switcher
