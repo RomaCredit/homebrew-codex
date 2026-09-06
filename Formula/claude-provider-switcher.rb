@@ -3,8 +3,8 @@ class ClaudeProviderSwitcher < Formula
 
   desc "Manage Claude Code API profiles, private credentials, and settings backups"
   homepage "https://github.com/RomaCredit/claude-provider-switcher"
-  url "https://github.com/RomaCredit/claude-provider-switcher/archive/refs/tags/v0.1.5.tar.gz"
-  sha256 "98b7f9a60834d99120dd37c1d8cbe147d8e6edd94ffabfefa92eca66e56ecc9a"
+  url "https://github.com/RomaCredit/claude-provider-switcher/archive/refs/tags/v0.1.6.tar.gz"
+  sha256 "2d95a1612be27ada461e00b91baaf41721b57f8e51a6591622ab8069a3dbbe6f"
   license "MIT"
 
   depends_on "python@3.13"
@@ -14,7 +14,7 @@ class ClaudeProviderSwitcher < Formula
   end
 
   test do
-    assert_match "0.1.5", shell_output("#{bin}/ccs --version")
-    assert_match "0.1.5", shell_output("#{bin}/claude-provider-switcher --version")
+    assert_match "0.1.6", shell_output("#{bin}/ccs --version")
+    assert_match "0.1.6", shell_output("#{bin}/claude-provider-switcher --version")
   end
 end

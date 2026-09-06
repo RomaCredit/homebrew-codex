@@ -17,12 +17,14 @@ ccs --version
 | Formula | Scope | Version |
 | --- | --- | --- |
 | [codex-provider-switcher](https://github.com/RomaCredit/codex-provider-switcher) | Codex local provider profiles and Desktop history metadata | 0.3.2 |
-| [claude-provider-switcher](https://github.com/RomaCredit/claude-provider-switcher) | Claude Code profiles, credentials, backups, and conservative project diagnostics | 0.1.5 |
+| [claude-provider-switcher](https://github.com/RomaCredit/claude-provider-switcher) | Claude Code profiles, credentials, backups, and conservative project diagnostics | 0.1.6 |
 
 Formulas use immutable source tags, verified SHA256 hashes, and isolated Python
 environments. Installation does not switch providers or modify client history.
 The tools do not share credentials. They do not migrate cloud conversations.
-Claude's formula installs from GitHub; it does not depend on PyPI publication.
+Claude's formula installs from GitHub. The same tool is also
+[available on PyPI](https://pypi.org/project/claude-provider-switcher/);
+the Homebrew installation does not depend on that channel.
 
 ```bash
 brew update
