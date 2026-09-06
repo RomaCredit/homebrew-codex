@@ -1,0 +1,34 @@
+name: Test formulas
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Locate Homebrew
+        shell: bash
+        run: |
+          if test -x /home/linuxbrew/.linuxbrew/bin/brew; then
+            echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
+          fi
+      - name: Test the checked-out tap
+        shell: bash
+        env:
+          HOMEBREW_NO_ANALYTICS: "1"
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+        run: |
+          brew tap-new RomaCredit/codex
+          cp Formula/*.rb "$(brew --repository RomaCredit/codex)/Formula/"
+          brew style RomaCredit/codex
+          brew install RomaCredit/codex/codex-provider-switcher RomaCredit/codex/claude-provider-switcher
+          brew test RomaCredit/codex/codex-provider-switcher
+          brew test RomaCredit/codex/claude-provider-switcher

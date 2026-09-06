@@ -3,8 +3,8 @@ class CodexProviderSwitcher < Formula
 
   desc "Keep Codex Desktop conversation history visible while switching provider profiles"
   homepage "https://github.com/RomaCredit/codex-provider-switcher"
-  url "https://github.com/RomaCredit/codex-provider-switcher/archive/refs/tags/v0.3.1.tar.gz"
-  sha256 "c75b75d0065f9ac6ee52e93f966982c915111d29afe080681b9ae5522baf656b"
+  url "https://github.com/RomaCredit/codex-provider-switcher/archive/refs/tags/v0.3.2.tar.gz"
+  sha256 "4ea433aa0e6ed325e0daa995c397a11a5c5e3b1f7c5fb7dcb1efdb5742655dae"
   license "MIT"
 
   depends_on "python@3.13"
@@ -14,6 +14,7 @@ class CodexProviderSwitcher < Formula
   end
 
   test do
-    assert_match "0.3.1", shell_output("#{bin}/cps --version")
+    assert_match "0.3.2", shell_output("#{bin}/cps --version")
+    assert_match "0.3.2", shell_output("#{bin}/codex-provider-switcher --version")
   end
 end
